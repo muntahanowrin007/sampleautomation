@@ -7,26 +7,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class Products extends Initializer{
 	
 	@BeforeClass
-	public void setup1() {
-		driver.get(applicationHost);
-		driver.manage().window().maximize();
-		commons.sleep(500);
-		driver.findElement(By.id("uc-btn-accept-banner")).click();
+	@Parameters({ "applicationHost","browsers", "email", "password" }) 
+	public void setup(String applicationHost, String browsers, String email, String password) {
+		setProperties(applicationHost, browsers, email, password);
+		initializeDrivers();
+		openBrowser();
+		activateCookies();
 	}
 	
 	@Test
 	public void addProductToCart() {
-		
-		System.out.println("addProductToCart called");
-		
-		
 		driver.findElement(By.xpath("//img[@title='Watches']")).click();
-		
 		//Click on the first watch from the list
 		driver.findElement(By.xpath("/html[1]/body[1]/div[3]/div[2]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/a[1]/div[1]/div[1]/img[1]")).click();
 		driver.findElement(By.xpath("//div[@class='btn btn--bigger-icon preventspinner btn-default']//div[@class='btn__content'][normalize-space()='Add to cart']")).click();
@@ -34,8 +31,6 @@ public class Products extends Initializer{
 		WebElement webElement = driver.findElement(By.xpath("//div[@class='btn btn--bigger-icon preventspinner btn-default product-details__btn--already-exist']//div[@class='btn__content'][normalize-space()='Already in Cart']"));
 		boolean elementCheckedResult =  webElement.isDisplayed();
 		assertTrue(elementCheckedResult);
-		
-		
 	}
 	
 	@Test
@@ -51,8 +46,8 @@ public class Products extends Initializer{
 		assertTrue(elementCheckedResult);
 	}
 	
+	@Test
 	public void visitCart() {
-		
 		WebElement webElement;
 		boolean elementCheckedResult;
 		driver.findElement(By.xpath("//span[@class='cart-amount']")).click();
@@ -73,20 +68,11 @@ public class Products extends Initializer{
 		webElement = driver.findElement(By.xpath("//button[@id='checkout-start']"));
 		elementCheckedResult = webElement.isEnabled();
 		assertTrue(elementCheckedResult);
-		
-		
-		
 	}
+	
 	@AfterClass
-	public void logout() {
-		
-		System.out.println("logout called");
-		driver.findElement(By.xpath("//img[@alt='fashionette']")).click();
-		commons.sleep(500);
-		driver.findElement(By.xpath("//span[@class='icon icon--user-active']")).click();
-		commons.sleep(500);
-		driver.findElement(By.xpath("//a[@class='btn']")).click();
-		
+	public void close() {
+		closeDriver();
 	}
 
 }
