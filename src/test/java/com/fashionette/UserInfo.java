@@ -3,18 +3,21 @@ package com.fashionette;
 import static org.testng.Assert.assertTrue;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
 public class UserInfo extends Initializer{
 	
 	@BeforeClass
-	public void setup2() {
-		driver.get(applicationHost);
-		driver.manage().window().maximize();
-		commons.sleep(500);
-		driver.findElement(By.id("uc-btn-accept-banner")).click();
+	@Parameters({ "applicationHost","browsers", "email", "password" }) 
+	public void setup(String applicationHost, String browsers, String email, String password) {
+		setProperties(applicationHost, browsers, email, password);
+		initializeDrivers();
+		openBrowser();
+		activateCookies();
 	}
 	
 	@Test
@@ -50,8 +53,11 @@ public class UserInfo extends Initializer{
 		elementCheckedResult = webElement.isDisplayed();
 		assertTrue(elementCheckedResult);
 		assertTrue(webElement.getText().contains("Muntaha Nowrin"));
-		
 	}
 	
+	@AfterClass
+	public void close() {
+		closeDriver();
+	}
 	
 }
