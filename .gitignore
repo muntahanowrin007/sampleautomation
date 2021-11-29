@@ -1,5 +1,6 @@
 .project
 .classpath
+test-output/
 target/
 .settings/
 .git/

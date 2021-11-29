@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Products">
-<parameter name="applicationHost" value="https://www.fashionette.de" />
-<parameter name="browsers" value="FireFox" />
-<parameter name="username" value="QA@fashionette.de" />
+<parameter name="applicationHost" value="https://www.fashionette.co.uk/" />
+<parameter name="browsers" value="chrome" />
+<parameter name="email" value="QA@fashionette.de" />
 <parameter name="password" value="!8Ntr*BM@!#G3VH" />
   <test thread-count="5" name="Test">
   <classes>

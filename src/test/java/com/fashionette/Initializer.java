@@ -1,5 +1,6 @@
 package com.fashionette;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -7,25 +8,31 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
+import com.fashionette.util.Commons;
+
 public class Initializer {
 	public WebDriver driver;
 	public String applicationHost;
 	public String browsers;
-	public String username;
+	public String email;
 	public String password;
-	
-	
+	private Commons commons;
+
+	public Initializer() {
+		commons = new Commons();
+	}
 	@BeforeSuite
-	@Parameters({ "applicationHost","browsers", "username", "password" })
-	public void beforeSuite(String applicationHost, String browsers, String username, String password) {
+	@Parameters({ "applicationHost","browsers", "email", "password" })
+	public void beforeSuite(String applicationHost, String browsers, String email, String password) {
 		this.applicationHost = applicationHost;
 		this.browsers = browsers;
-		this.username = username;
+		this.email = email;
 		this.password = password;
-		
+
 		initializeDrivers();
 		openBrowser();
-		
+		closePopup(); 
+
 	}
 	public void initializeDrivers() {
 
@@ -41,11 +48,16 @@ public class Initializer {
 
 	}
 	public void openBrowser() {
-		
-		System.out.println(applicationHost);
 		driver.get(applicationHost);
 		driver.manage().window().maximize();
+		//driver.manage().timeouts().implicitlyWait(Duration.ofMillis(10000));
 	}
+    
+	public void closePopup() { 
+		commons.sleep(500);
+		driver.findElement(By.id("uc-btn-accept-banner")).click();
+	}
+
 
 	@AfterSuite
 	public void afterSuite() {
