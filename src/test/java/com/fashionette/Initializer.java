@@ -1,13 +1,12 @@
 package com.fashionette;
 
-
-import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.fashionette.util.Commons;
 
 public class Initializer {
@@ -17,6 +16,7 @@ public class Initializer {
 	public String email;
 	public String password;
 	public Commons commons;
+	public ExtentReports extent;
 
 	public Initializer() {
 		System.out.println("Initializer called");
@@ -53,6 +53,12 @@ public class Initializer {
 	public void activateCookies() { 
 		commons.sleep(500);
 		driver.findElement(By.id("uc-btn-accept-banner")).click();
+	}
+	
+	public void extentReport(String reportName) {
+		ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(reportName+".html");
+		extent = new ExtentReports();
+		extent.attachReporter(htmlReporter);
 	}
 
 	public void closeDriver() {
