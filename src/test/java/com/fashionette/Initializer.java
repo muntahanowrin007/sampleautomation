@@ -18,12 +18,14 @@ public class Initializer {
 	public Commons commons;
 	public ExtentReports extent;
 
-	public Initializer() {
+	/*public Initializer() {
 		System.out.println("Initializer called");
-		commons = new Commons();
-	}
+		
+	} */
 	
 	public void setProperties(String applicationHost, String browsers, String email, String password) {
+		
+		commons = new Commons();
 		this.applicationHost = applicationHost; 
 		this.browsers = browsers; 
 		this.email = email; 
