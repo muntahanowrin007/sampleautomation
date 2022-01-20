@@ -55,6 +55,7 @@ public class Initializer {
 	public void activateCookies() { 
 		commons.sleep(500);
 		driver.findElement(By.id("uc-btn-accept-banner")).click();
+		driver.findElement(null).click();
 	}
 	
 	public void extentReport(String reportName) {
