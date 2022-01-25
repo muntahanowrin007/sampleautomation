@@ -1,5 +1,5 @@
-# Fashionette
-Fashionette’s automated tests code challenge
+# Automation Test cases
+Sample Tasks of automation test cases
 	
 ## Steps to Run Test Project
  * Make Sure Java is installed where project will be cloned
