@@ -1,4 +1,4 @@
-package com.fashionette;
+package com.sampleautomation;
 
 import static org.testng.Assert.assertTrue;
 

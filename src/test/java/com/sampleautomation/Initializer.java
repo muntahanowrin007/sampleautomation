@@ -1,4 +1,4 @@
-package com.fashionette;
+package com.sampleautomation;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-import com.fashionette.util.Commons;
+import com.sampleautomation.util.Commons;
 
 public class Initializer {
 	public WebDriver driver;
@@ -18,14 +18,12 @@ public class Initializer {
 	public Commons commons;
 	public ExtentReports extent;
 
-	/*public Initializer() {
+	public Initializer() {
 		System.out.println("Initializer called");
-		
-	} */
+		commons = new Commons();
+	}
 	
 	public void setProperties(String applicationHost, String browsers, String email, String password) {
-		
-		commons = new Commons();
 		this.applicationHost = applicationHost; 
 		this.browsers = browsers; 
 		this.email = email; 

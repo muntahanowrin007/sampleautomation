@@ -1,4 +1,4 @@
-package com.fashionette.util;
+package com.sampleautomation.util;
 
 public class Commons {
 	public void sleep(int milliseconds) {
