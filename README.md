@@ -4,11 +4,11 @@ Sample Tasks of automation test cases
 ## Steps to Run Test Project
  * Make Sure Java is installed where project will be cloned
  * Browser pre requisite <b>Chrome</b> or <b>Firefox</b>
- * Clone the project - <https://github.com/muntahanowrin007/fashionette.git> 
+ * Clone the project - <https://github.com/muntahanowrin007/sampleautomation.git> 
  * <b>Master</b> is the default branch and all latest codes are exist there.
  
  * Import the project in any IDE as a <b>Maven</b> project
- * Look for testng.xml file in the project root directory [ testng.xml located at ..\git\fashionette\testng.xml ]. Change parameters value if required; for example "name="browsers" value="<b>Chrome</b>"
+ * Look for testng.xml file in the project root directory [ testng.xml located at ..\git\sampleautomation\testng.xml ]. Change parameters value if required; for example "name="browsers" value="<b>Chrome</b>"
  * Run testng.xml file as TestNG suite . <b>Example</b>: In eclipse, right click on testng.xml then click on <b>Run as</b> and then select <b>TestNG suite</b>
  
 ## Find Test Result
